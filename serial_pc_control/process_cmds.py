@@ -11,11 +11,11 @@ import cmds_keyboard
 import device_serial
 
 
-CMD_START = b"$%@s-"
-CMD_START_RE = b"\$\%%@s-%b@\%%\$"
-CMD_TYPE_RE = b"\$\%@s-(.*?)@\%\$"
-CMD_END = b"$%@end@%$\n"
-CMD_END_RE = b"\$\%@end@\%\$"
+CMD_START = b"|@s-"
+CMD_START_RE = b"\|@s-%b@\|"
+CMD_TYPE_RE = b"\|@s-(.*?)@\|"
+CMD_END = b"|@e@|\n"
+CMD_END_RE = b"\|@e@\|"
 
 CMDS = {
     'm-ckl': cmds_mouse.left_click,
