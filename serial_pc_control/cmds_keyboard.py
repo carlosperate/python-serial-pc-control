@@ -4,6 +4,11 @@
 import pyautogui
 
 
+def init() -> None:
+    """Run initialisation code. Nothing yet"""
+    return
+
+
 def write(text:str) -> None:
     """Types in the keyboard the given text.
 
@@ -12,13 +17,3 @@ def write(text:str) -> None:
     if not text:
         return
     pyautogui.typewrite(text, interval=0)
-
-
-def main() -> None:
-    """Main entry point."""
-    pyautogui.FAILSAFE = True
-    pyautogui.PAUSE = 0.01
-
-
-if __name__ == "__main__":
-    main()

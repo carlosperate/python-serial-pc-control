@@ -4,8 +4,7 @@
 import pyautogui
 
 
-
-def config_pyautogui() -> None:
+def init() -> None:
     """Configure pyautogui for smooth mouse movement."""
     pyautogui.FAILSAFE = False
     pyautogui.MINIMUM_DURATION = 0.0

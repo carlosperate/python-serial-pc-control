@@ -18,6 +18,9 @@ CMD_END = b"|@e@|\n"
 CMD_END_RE = b"\|@e@\|"
 
 CMDS = {
+    "m-mv": cmds_mouse.move_vertical,
+    "m-mh": cmds_mouse.move_horizontal,
+    "m-mr": cmds_mouse.move_relative,
     'm-ckl': cmds_mouse.left_click,
     'm-ckr': cmds_mouse.right_click,
     "k-txt": cmds_keyboard.write,
@@ -79,8 +82,10 @@ def process_serial_cmds(port: str = None, baud_rate: int = None) -> None:
             CMDS[cmd_name](cmd_content)
 
 
-def main() -> None:
-    process_serial()
+def main(port: str = None, baud_rate: int = None) -> None:
+    cmds_mouse.init()
+    cmds_keyboard.init()
+    process_serial_cmds(port, baud_rate)
 
 
 if __name__ == "__main__":
