@@ -4,12 +4,21 @@
 import pyautogui
 
 
+
+def config_pyautogui() -> None:
+    """Configure pyautogui for smooth mouse movement."""
+    pyautogui.FAILSAFE = False
+    pyautogui.MINIMUM_DURATION = 0.0
+    pyautogui.MINIMUM_SLEEP = 0.0
+    pyautogui.PAUSE = 0.0
+
+
 def move_up(pixels: str) -> None:
     """Moves the mouse up a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer.
     """
-    pyautogui.moveRel(pixels, 0, duration=0)
+    pyautogui.moveRel(xOffset=int(pixels), yOffset=0, duration=0.0, pause=None, _pause=False)
 
 
 def move_down(pixels: str) -> None:
@@ -18,7 +27,7 @@ def move_down(pixels: str) -> None:
     :param pixels: Number of pixels to move the mouse pointer.
     """
     pixels *= -1
-    pyautogui.moveRel(pixels, 0, duration=0)
+    pyautogui.moveRel(xOffset=int(pixels), yOffset=0, duration=0.0, pause=None, _pause=False)
 
 
 def move_left(pixels: str) -> None:
@@ -27,7 +36,7 @@ def move_left(pixels: str) -> None:
     :param pixels: Number of pixels to move the mouse pointer.
     """
     pixels *= -1
-    pyautogui.moveRel(0, pixels, duration=0)
+    pyautogui.moveRel(xOffset=0, yOffset=int(pixels), duration=0.0, pause=None, _pause=False)
 
 
 def move_right(pixels: str) -> None:
@@ -35,7 +44,7 @@ def move_right(pixels: str) -> None:
 
     :param pixels: Number of pixels to move the mouse pointer.
     """
-    pyautogui.moveRel(0, pixels, duration=0)
+    pyautogui.moveRel(xOffset=0, yOffset=int(pixels), duration=0.0, pause=None, _pause=False)
 
 
 def move_vertical(pixels: str) -> None:
@@ -44,7 +53,7 @@ def move_vertical(pixels: str) -> None:
     :param pixels: Number of pixels to move the mouse pointer, a positive
         number will move up and negative down.
     """
-    pyautogui.moveRel(pixels, 0, duration=0)
+    pyautogui.moveRel(xOffset=0, yOffset=int(pixels), duration=0.0, pause=None, _pause=False)
 
 
 def move_horizontal(pixels: str) -> None:
@@ -53,7 +62,19 @@ def move_horizontal(pixels: str) -> None:
     :param pixels: Number of pixels to move the mouse pointer, a positive
         number will move right and negative left.
     """
-    pyautogui.moveRel(0, pixels, duration=0)
+    pyautogui.moveRel(xOffset=int(pixels), yOffset=0, duration=0.0, pause=None, _pause=False)
+
+
+def move_relative(pixels_x_y: str) -> None:
+    """Moves the mouse horizontally a number of pixels.
+
+    :param pixels: Number of pixels to move the mouse pointer, a positive
+        number will move right and negative left.
+    """
+    x_and_y = pixels_x_y.split(" ")
+    x = int(x_and_y[0])
+    y = int(x_and_y[1])
+    pyautogui.moveRel(xOffset=x, yOffset=y, duration=0.0, pause=None, _pause=False)
 
 
 def left_click(throw_away: None = None) -> None:
@@ -65,7 +86,7 @@ def left_click(throw_away: None = None) -> None:
     """
     if throw_away:
         raise ValueError("The left click command does not expect a value.")
-    pyautogui.click(clicks=1, interval=0, button='left')
+    pyautogui.click(clicks=1, interval=0.0, button='left')
 
 
 def right_click(throw_away: None = None) -> None:
@@ -77,23 +98,13 @@ def right_click(throw_away: None = None) -> None:
     """
     if throw_away:
         raise ValueError("The right click command does not expect a value.")
-    pyautogui.click(clicks=1, interval=0, button='right')
+    pyautogui.click(clicks=1, interval=0.0, button='right')
 
 
 def scroll(steps: str) -> None:
     """Moves the mouse horizontally a number of pixels.
 
-    :param pixels: Number of pixels to move the mouse pointer, a positive
+    :param steps: Number of pixels to move the mouse pointer, a positive
         number will move right and negative left.
     """
     pyautogui.scroll(steps)
-
-
-def main() -> None:
-    """Main entry point."""
-    pyautogui.FAILSAFE = True
-    pyautogui.PAUSE = 0.01
-
-
-if __name__ == "__main__":
-    main()
