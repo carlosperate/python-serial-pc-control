@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# Copyright (c) 2020 Carlos Pereira Atencio
+# SPDX-License-Identifier: MIT
 """
 Helper module to detect the serial port of known boards and connect to them.
 """

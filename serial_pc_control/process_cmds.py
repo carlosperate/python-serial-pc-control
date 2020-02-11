@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Process and executes the commands received via serial."""
+# Copyright (c) 2020 Carlos Pereira Atencio
+# SPDX-License-Identifier: MIT
+"""
+Process and executes the commands received via serial.
+"""
 import re
 from typing import Tuple
 
