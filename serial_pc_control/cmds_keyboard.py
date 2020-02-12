@@ -13,7 +13,7 @@ def init() -> None:
     return
 
 
-def write(text:str) -> None:
+def write(text: str) -> None:
     """Types in the keyboard the given text.
 
     :param text: Text to type.

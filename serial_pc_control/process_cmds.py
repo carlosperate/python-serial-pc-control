@@ -19,8 +19,8 @@ CMDS = {
     "m-mv": cmds_mouse.move_vertical,
     "m-mh": cmds_mouse.move_horizontal,
     "m-mr": cmds_mouse.move_relative,
-    'm-ckl': cmds_mouse.left_click,
-    'm-ckr': cmds_mouse.right_click,
+    "m-ckl": cmds_mouse.left_click,
+    "m-ckr": cmds_mouse.right_click,
     "k-txt": cmds_keyboard.write,
 }
 
@@ -36,8 +36,9 @@ def get_serial_config(port: str = None, baud_rate: int = None) -> Tuple[str, int
         port = found_port
         baud_rate = found_device.baud_rate
     else:
-        print("When autodetect is not used both the port and baud rate need "
-              "to be provided.")
+        print(
+            "When autodetect is not used both the port and baud rate need to be provided."
+        )
     print("Connecting to port {} at baud rate {}.".format(port, baud_rate))
 
     return port, baud_rate

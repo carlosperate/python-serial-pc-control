@@ -13,13 +13,13 @@ from serial.tools import list_ports
 
 
 # Devices added in priority order
-DeviceInfo = namedtuple('DeviceInfo', ['name','vid', 'pid', 'baud_rate'])
+DeviceInfo = namedtuple("DeviceInfo", ["name", "vid", "pid", "baud_rate"])
 DEVICES = [
-    DeviceInfo(name='microbit', vid=0x0D28, pid=0x0204, baud_rate=115200),
-    DeviceInfo(name='arduino_uno_0', vid=0x2341, pid=0x0043, baud_rate=9600),
-    DeviceInfo(name='arduino_uno_1', vid=0x2341, pid=0x0001, baud_rate=9600),
-    DeviceInfo(name='arduino_uno_2', vid=0x2A03, pid=0x0043, baud_rate=9600),
-    DeviceInfo(name='arduino_uno_3', vid=0x2341, pid=0x0243, baud_rate=9600),
+    DeviceInfo(name="microbit", vid=0x0D28, pid=0x0204, baud_rate=115200),
+    DeviceInfo(name="arduino_uno_0", vid=0x2341, pid=0x0043, baud_rate=9600),
+    DeviceInfo(name="arduino_uno_1", vid=0x2341, pid=0x0001, baud_rate=9600),
+    DeviceInfo(name="arduino_uno_2", vid=0x2A03, pid=0x0043, baud_rate=9600),
+    DeviceInfo(name="arduino_uno_3", vid=0x2341, pid=0x0243, baud_rate=9600),
 ]
 
 
@@ -34,5 +34,11 @@ def find_device_port() -> Tuple[Optional[DeviceInfo], Optional[str]]:
 
 def connect_device(port: str, baud_rate: int) -> Serial:
     return Serial(
-            port, baud_rate, timeout=1, parity=PARITY_NONE,
-            stopbits=STOPBITS_ONE, rtscts=False, dsrdtr=False)
+        port,
+        baud_rate,
+        timeout=1,
+        parity=PARITY_NONE,
+        stopbits=STOPBITS_ONE,
+        rtscts=False,
+        dsrdtr=False,
+    )

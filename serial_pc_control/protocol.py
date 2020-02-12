@@ -29,7 +29,9 @@ def parse_cmd(cmd_full_str: bytes) -> Tuple[str, str]:
         raise ValueError("Could not parse command type.")
 
     cmd_name = cmd_name_match.groups()[0]
-    cmd_content_match = re.match((CMD_START_RE % cmd_name) + b"(.*?)" + CMD_END_RE, cmd_full_str, flags=re.S)
+    cmd_content_match = re.match(
+        (CMD_START_RE % cmd_name) + b"(.*?)" + CMD_END_RE, cmd_full_str, flags=re.S
+    )
     if not cmd_content_match:
         raise ValueError("Could not parse command value.")
 
