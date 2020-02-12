@@ -9,10 +9,10 @@ from typing import Tuple
 
 from serial import Serial
 
-import cmds_mouse
-import cmds_keyboard
-import device_serial
-import protocol
+from serial_pc_control import cmds_mouse
+from serial_pc_control import cmds_keyboard
+from serial_pc_control import device_serial
+from serial_pc_control import protocol
 
 
 CMDS = {
