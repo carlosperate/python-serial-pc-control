@@ -1,8 +1,12 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
 [tool.poetry]
 name = "serial-pc-control"
 version = "0.1.0"
 description = "Control your PC keyboard and mouse via serial messages."
-authors = ["carlosperate <carlosperate@users.noreply.github.com>"]
+authors = ["carlosperate <carlosperate@embeddedlog.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
@@ -10,11 +14,10 @@ pyserial = "^3.4"
 pyautogui = "^0.9.48"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
-black = "^19.10b0"
+# Packaging, macholib needed by PyInstaller in macOS
 pyinstaller = "^3.6"
 macholib = "^1.8; platform_system == 'Darwin'"
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+# Linting
+black = "^19.10b0"
+# Testing
+pytest = "^5.2"
