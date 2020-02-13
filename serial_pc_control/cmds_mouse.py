@@ -88,7 +88,8 @@ def move_relative(pixels_x_y: str) -> None:
     x = int(x_and_y[0])
     y = int(x_and_y[1])
     pyautogui.moveRel(
-            xOffset=x, yOffset=y, duration=0.0, pause=None, _pause=False)
+        xOffset=x, yOffset=y, duration=0.0, pause=None, _pause=False
+    )
 
 
 def left_click(throw_away: None = None) -> None:
