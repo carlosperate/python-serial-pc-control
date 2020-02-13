@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2020 Carlos Pereira Atencio
 # SPDX-License-Identifier: MIT
-"""
-Functions to run mouse commands on the host PC.
-"""
+"""Functions to run mouse commands on the host PC."""
 import pyautogui
 
 
@@ -17,7 +15,7 @@ def init() -> None:
 
 
 def move_up(pixels: str) -> None:
-    """Moves the mouse up a number of pixels.
+    """Move the mouse up a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer.
     """
@@ -27,7 +25,7 @@ def move_up(pixels: str) -> None:
 
 
 def move_down(pixels: str) -> None:
-    """Moves the mouse down a number of pixels.
+    """Move the mouse down a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer.
     """
@@ -38,7 +36,7 @@ def move_down(pixels: str) -> None:
 
 
 def move_left(pixels: str) -> None:
-    """Moves the mouse left a number of pixels.
+    """Move the mouse left a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer.
     """
@@ -49,7 +47,7 @@ def move_left(pixels: str) -> None:
 
 
 def move_right(pixels: str) -> None:
-    """Moves the mouse right a number of pixels.
+    """Move the mouse right a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer.
     """
@@ -59,7 +57,7 @@ def move_right(pixels: str) -> None:
 
 
 def move_vertical(pixels: str) -> None:
-    """Moves the mouse vertically a number of pixels.
+    """Move the mouse vertically a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer, a positive
         number will move up and negative down.
@@ -70,7 +68,7 @@ def move_vertical(pixels: str) -> None:
 
 
 def move_horizontal(pixels: str) -> None:
-    """Moves the mouse horizontally a number of pixels.
+    """Move the mouse horizontally a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer, a positive
         number will move right and negative left.
@@ -81,7 +79,7 @@ def move_horizontal(pixels: str) -> None:
 
 
 def move_relative(pixels_x_y: str) -> None:
-    """Moves the mouse horizontally a number of pixels.
+    """Move the mouse horizontally a number of pixels.
 
     :param pixels: Number of pixels to move the mouse pointer, a positive
         number will move right and negative left.
@@ -89,11 +87,12 @@ def move_relative(pixels_x_y: str) -> None:
     x_and_y = pixels_x_y.split(" ")
     x = int(x_and_y[0])
     y = int(x_and_y[1])
-    pyautogui.moveRel(xOffset=x, yOffset=y, duration=0.0, pause=None, _pause=False)
+    pyautogui.moveRel(
+            xOffset=x, yOffset=y, duration=0.0, pause=None, _pause=False)
 
 
 def left_click(throw_away: None = None) -> None:
-    """Performs a left click action.
+    """Perform a left click action.
 
     :param throw_away: The command parser always sends a parameter, for this
         command nothing is expected, so it will throw an error if something is
@@ -105,7 +104,7 @@ def left_click(throw_away: None = None) -> None:
 
 
 def right_click(throw_away: None = None) -> None:
-    """Performs a right click action.
+    """Perform a right click action.
 
     :param throw_away: The command parser always sends a parameter, for this
         command nothing is expected, so it will throw an error if something is
@@ -117,7 +116,7 @@ def right_click(throw_away: None = None) -> None:
 
 
 def scroll(steps: str) -> None:
-    """Moves the mouse horizontally a number of pixels.
+    """Move the mouse horizontally a number of pixels.
 
     :param steps: Number of pixels to move the mouse pointer, a positive
         number will move right and negative left.

@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2020 Carlos Pereira Atencio
 # SPDX-License-Identifier: MIT
-"""
-Process and executes the commands received via serial.
-"""
+"""Process and executes the commands received via serial."""
 from typing import Tuple
 
 from serial import Serial
@@ -25,7 +23,10 @@ CMDS = {
 }
 
 
-def get_serial_config(port: str = None, baud_rate: int = None) -> Tuple[str, int]:
+def get_serial_config(
+    port: str = None, baud_rate: int = None
+) -> Tuple[str, int]:
+    """Process the given port and baud rate or discover any connected board."""
     if port and baud_rate:
         print("Bypassing auto-detect.")
     elif not port and not baud_rate:
@@ -37,7 +38,8 @@ def get_serial_config(port: str = None, baud_rate: int = None) -> Tuple[str, int
         baud_rate = found_device.baud_rate
     else:
         print(
-            "When autodetect is not used both the port and baud rate need to be provided."
+            "When autodetect is not used both the port and baud rate need to "
+            "be provided."
         )
     print("Connecting to port {} at baud rate {}.".format(port, baud_rate))
 
@@ -45,6 +47,7 @@ def get_serial_config(port: str = None, baud_rate: int = None) -> Tuple[str, int
 
 
 def get_next_serial_cmd(serial: Serial) -> bytes:
+    """Wait until it can return full serial command."""
     cmd_full_str = None
     while not cmd_full_str:
         cmd_full_str = serial.read_until(terminator=protocol.CMD_END)
@@ -52,6 +55,7 @@ def get_next_serial_cmd(serial: Serial) -> bytes:
 
 
 def process_serial_cmds(serial) -> None:
+    """Infinite loop to process any incoming serial command."""
     while True:
         cmd_str = get_next_serial_cmd(serial)
         try:
@@ -66,6 +70,7 @@ def process_serial_cmds(serial) -> None:
 
 
 def main(port: str = None, baud_rate: int = None) -> None:
+    """Entry point to the command processor."""
     cmds_mouse.init()
     cmds_keyboard.init()
     protocol.init()

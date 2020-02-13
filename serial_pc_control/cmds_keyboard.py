@@ -2,14 +2,12 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2020 Carlos Pereira Atencio
 # SPDX-License-Identifier: MIT
-"""
-Functions to run keyboard commands on the host PC.
-"""
+"""Functions to run keyboard commands on the host PC."""
 import pyautogui
 
 
 def init() -> None:
-    """Run initialisation code. Nothing yet"""
+    """Run initialisation code. Nothing yet."""
     return
 
 

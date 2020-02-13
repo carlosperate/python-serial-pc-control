@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: MIT
 """
 Helper module to detect the serial port of known boards and connect to them.
+
+Or connect to any other serial port.
 """
 from collections import namedtuple
 from typing import Tuple, Optional
@@ -24,6 +26,7 @@ DEVICES = [
 
 
 def find_device_port() -> Tuple[Optional[DeviceInfo], Optional[str]]:
+    """Iterate through available serial ports until the first match."""
     comports = list_ports.comports()
     for device in DEVICES:
         for port in comports:
@@ -33,6 +36,7 @@ def find_device_port() -> Tuple[Optional[DeviceInfo], Optional[str]]:
 
 
 def connect_device(port: str, baud_rate: int) -> Serial:
+    """Connect to a given serial port at a given baud rate."""
     return Serial(
         port,
         baud_rate,
