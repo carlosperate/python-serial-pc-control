@@ -25,5 +25,7 @@ jobs:
       run: python -m poetry install
     - name: Run pytest
       run: python -m poetry run python -m pytest
+    - name: Run Flake8
+      run: python -m poetry run python -m flake8
     - name: Run black
       run: python -m poetry run python -m black . --check --diff
