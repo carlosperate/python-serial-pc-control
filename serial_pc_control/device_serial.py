@@ -8,9 +8,9 @@ Helper module to detect the serial port of known boards and connect to them.
 Or connect to any other serial port.
 """
 from collections import namedtuple
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
-from serial import Serial, PARITY_NONE, STOPBITS_ONE
+from serial import PARITY_NONE, STOPBITS_ONE, Serial
 from serial.tools import list_ports
 
 

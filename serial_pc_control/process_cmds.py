@@ -7,8 +7,8 @@ from typing import Tuple
 
 from serial import Serial
 
-from serial_pc_control import cmds_mouse
 from serial_pc_control import cmds_keyboard
+from serial_pc_control import cmds_mouse
 from serial_pc_control import device_serial
 from serial_pc_control import protocol
 
