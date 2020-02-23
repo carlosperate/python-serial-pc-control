@@ -7,15 +7,22 @@ Helper module to detect the serial port of known boards and connect to them.
 
 Or connect to any other serial port.
 """
-from collections import namedtuple
-from typing import Optional, Tuple
+from typing import NamedTuple, Tuple
 
-from serial import PARITY_NONE, STOPBITS_ONE, Serial
-from serial.tools import list_ports
+from serial import PARITY_NONE, STOPBITS_ONE, Serial  # type: ignore
+from serial.tools import list_ports  # type: ignore
+
+
+class DeviceInfo(NamedTuple):
+    """Named Tuple for serial board info."""
+
+    name: str
+    vid: int
+    pid: int
+    baud_rate: int
 
 
 # Devices added in priority order
-DeviceInfo = namedtuple("DeviceInfo", ["name", "vid", "pid", "baud_rate"])
 DEVICES = [
     DeviceInfo(name="microbit", vid=0x0D28, pid=0x0204, baud_rate=115200),
     DeviceInfo(name="arduino_uno_0", vid=0x2341, pid=0x0043, baud_rate=9600),
@@ -25,14 +32,14 @@ DEVICES = [
 ]
 
 
-def find_device_port() -> Tuple[Optional[DeviceInfo], Optional[str]]:
+def find_device_port() -> Tuple[DeviceInfo, str]:
     """Iterate through available serial ports until the first match."""
     comports = list_ports.comports()
     for device in DEVICES:
         for port in comports:
             if (port.pid == device.pid) and (port.vid == device.vid):
                 return device, port.device
-    return None, None
+    raise Exception("Could not find a known device connected.")
 
 
 def connect_device(port: str, baud_rate: int) -> Serial:

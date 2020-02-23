@@ -3,7 +3,7 @@
 # Copyright (c) 2020 Carlos Pereira Atencio
 # SPDX-License-Identifier: MIT
 """Functions to run keyboard commands on the host PC."""
-import pyautogui
+import pyautogui  # type: ignore
 
 
 def init() -> None:

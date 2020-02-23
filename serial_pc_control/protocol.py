@@ -37,6 +37,4 @@ def parse_cmd(cmd_full_str: bytes) -> Tuple[str, str]:
         raise ValueError("Could not parse command value.")
 
     cmd_content = cmd_content_match.groups()[0]
-    cmd_content = cmd_content.decode("utf-8")
-    cmd_name = cmd_name.decode("utf-8")
-    return cmd_name, cmd_content
+    return cmd_name.decode("utf-8"), cmd_content.decode("utf-8")

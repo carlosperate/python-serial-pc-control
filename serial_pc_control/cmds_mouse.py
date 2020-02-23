@@ -3,7 +3,7 @@
 # Copyright (c) 2020 Carlos Pereira Atencio
 # SPDX-License-Identifier: MIT
 """Functions to run mouse commands on the host PC."""
-import pyautogui
+import pyautogui  # type: ignore
 
 
 def init() -> None:
@@ -92,7 +92,7 @@ def move_relative(pixels_x_y: str) -> None:
     )
 
 
-def left_click(throw_away: None = None) -> None:
+def left_click(throw_away: str = "") -> None:
     """Perform a left click action.
 
     :param throw_away: The command parser always sends a parameter, for this
@@ -104,7 +104,7 @@ def left_click(throw_away: None = None) -> None:
     pyautogui.click(clicks=1, interval=0.0, button="left")
 
 
-def right_click(throw_away: None = None) -> None:
+def right_click(throw_away: str = "") -> None:
     """Perform a right click action.
 
     :param throw_away: The command parser always sends a parameter, for this

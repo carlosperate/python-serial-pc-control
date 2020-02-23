@@ -3,9 +3,10 @@
 # Copyright (c) 2020 Carlos Pereira Atencio
 # SPDX-License-Identifier: MIT
 """Process and executes the commands received via serial."""
-from typing import Tuple
+import sys
+from typing import Callable, Dict, NoReturn, Tuple
 
-from serial import Serial
+from serial import Serial  # type: ignore
 
 from serial_pc_control import cmds_keyboard
 from serial_pc_control import cmds_mouse
@@ -13,7 +14,7 @@ from serial_pc_control import device_serial
 from serial_pc_control import protocol
 
 
-CMDS = {
+CMDS: Dict[str, Callable[[str], None]] = {
     "m-mv": cmds_mouse.move_vertical,
     "m-mh": cmds_mouse.move_horizontal,
     "m-mr": cmds_mouse.move_relative,
@@ -30,9 +31,11 @@ def get_serial_config(
     if port and baud_rate:
         print("Bypassing auto-detect.")
     elif not port and not baud_rate:
-        found_device, found_port = device_serial.find_device_port()
-        if not (found_port or found_device):
-            raise Exception("Could not find a known device connected.")
+        try:
+            found_device, found_port = device_serial.find_device_port()
+        except Exception as e:
+            print("Error: {}".format(e), file=sys.stderr)
+            sys.exit(1)
         print("Found {} device.".format(found_device.name))
         port = found_port
         baud_rate = found_device.baud_rate
@@ -41,6 +44,7 @@ def get_serial_config(
             "When autodetect is not used both the port and baud rate need to "
             "be provided."
         )
+        sys.exit(1)
     print("Connecting to port {} at baud rate {}.".format(port, baud_rate))
 
     return port, baud_rate
@@ -54,15 +58,14 @@ def get_next_serial_cmd(serial: Serial) -> bytes:
     return cmd_full_str
 
 
-def process_serial_cmds(serial) -> None:
+def process_serial_cmds(serial) -> NoReturn:
     """Infinite loop to process any incoming serial command."""
     while True:
         cmd_str = get_next_serial_cmd(serial)
         try:
             cmd_name, cmd_content = protocol.parse_cmd(cmd_str)
         except Exception as e:
-            print("Error processing message: {}\n{}".format(cmd_str))
-            print(e)
+            print("{}\nError processing message: {!r}".format(e, cmd_str))
         print(cmd_str)
         print("{} -> {}".format(cmd_name, cmd_content))
         if cmd_name in CMDS:
