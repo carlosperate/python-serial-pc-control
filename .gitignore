@@ -73,6 +73,11 @@ target/
 venv/
 ENV/
 
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
 #####################
 # OS Specific files #
 #####################
