@@ -72,7 +72,7 @@ def process_serial_cmds(serial) -> NoReturn:
             CMDS[cmd_name](cmd_content)
 
 
-def main(port: str = None, baud_rate: int = None) -> None:
+def main(port: str = None, baud_rate: int = None) -> NoReturn:
     """Entry point to the command processor."""
     cmds_mouse.init()
     cmds_keyboard.init()
