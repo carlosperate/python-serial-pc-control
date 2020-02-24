@@ -13,6 +13,7 @@ python = "^3.6"
 pyserial = "^3.4"
 pyautogui = "^0.9.48"
 typer = "^0.0.8"
+colorama = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 # Packaging, macholib needed by PyInstaller in macOS
