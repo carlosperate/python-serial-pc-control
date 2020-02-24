@@ -5,7 +5,7 @@ DEBUG = False
 block_cipher = None
 
 
-a = Analysis(['../serial_pc_control/process_cmds.py'],
+a = Analysis(['../serial_pc_control/cli.py'],
              pathex=['../'],
              binaries=[],
              datas=[],
