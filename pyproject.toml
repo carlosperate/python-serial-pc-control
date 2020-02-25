@@ -26,7 +26,6 @@ flake8 = "^3.7.9"
 flake8-bugbear = "^20.1.4"
 flake8-builtins = "^1.4.2"
 flake8-docstrings = "^1.5.0"
-flake8-import-order = "^0.18.1"
 # Testing
 pytest = "^5.2"
 

@@ -9,7 +9,8 @@ Or connect to any other serial port.
 """
 from typing import NamedTuple, Tuple
 
-from serial import PARITY_NONE, STOPBITS_ONE, Serial  # type: ignore
+from serial import Serial  # type: ignore
+from serial import PARITY_NONE, STOPBITS_ONE
 from serial.tools import list_ports  # type: ignore
 
 
