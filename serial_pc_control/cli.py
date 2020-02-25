@@ -19,5 +19,10 @@ def run(port: str = None, baud_rate: int = None) -> NoReturn:
     process_cmds.main(port=port, baud_rate=baud_rate)
 
 
-if __name__ == "__main__":
+def main():
+    """CLI entry point."""
     app()
+
+
+if __name__ == "__main__":
+    main()
