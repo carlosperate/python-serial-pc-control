@@ -66,10 +66,11 @@ def process_serial_cmds(serial) -> NoReturn:
             cmd_name, cmd_content = protocol.parse_cmd(cmd_str)
         except Exception as e:
             print("{}\nError processing message: {!r}".format(e, cmd_str))
-        print(cmd_str)
-        print("{} -> {}".format(cmd_name, cmd_content))
-        if cmd_name in CMDS:
-            CMDS[cmd_name](cmd_content)
+        else:
+            print(cmd_str)
+            print("{} -> {}".format(cmd_name, cmd_content))
+            if cmd_name in CMDS:
+                CMDS[cmd_name](cmd_content)
 
 
 def main(port: str = None, baud_rate: int = None) -> NoReturn:
