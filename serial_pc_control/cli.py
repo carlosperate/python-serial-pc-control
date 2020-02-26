@@ -14,9 +14,11 @@ app = typer.Typer()
 
 
 @app.command()
-def run(port: str = None, baud_rate: int = None) -> NoReturn:
+def run(
+    port: str = None, baud_rate: int = None, verbose: bool = False
+) -> NoReturn:
     """Run the Serial PC Control application."""
-    process_cmds.main(port=port, baud_rate=baud_rate)
+    process_cmds.run(port=port, baud_rate=baud_rate, verbose=verbose)
 
 
 def main():
