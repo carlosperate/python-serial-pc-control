@@ -19,3 +19,13 @@ def write(text: str) -> None:
     if not text:
         return
     pyautogui.typewrite(text, interval=0)
+
+
+def press(key: str) -> None:
+    """Presses a special key in the keyboard.
+
+    :param ley: Key to press.
+    """
+    if not key:
+        return
+    pyautogui.press(key)
