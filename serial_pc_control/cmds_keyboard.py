@@ -7,8 +7,11 @@ import pyautogui  # type: ignore
 
 
 def init() -> None:
-    """Run initialisation code. Nothing yet."""
-    return
+    """Configure pyautogui for smoth keyboard operation."""
+    pyautogui.FAILSAFE = False
+    pyautogui.MINIMUM_DURATION = 0.0
+    pyautogui.MINIMUM_SLEEP = 0.0
+    pyautogui.PAUSE = 0.0
 
 
 def write(text: str) -> None:
@@ -22,10 +25,30 @@ def write(text: str) -> None:
 
 
 def press(key: str) -> None:
-    """Presses a special key in the keyboard.
+    """Presses a key in the keyboard.
 
-    :param ley: Key to press.
+    :param key: Key to press.
     """
     if not key:
         return
-    pyautogui.press(key)
+    pyautogui.press(key, interval=0.0, pause=None, _pause=False)
+
+
+def key_down(key: str) -> None:
+    """Presses down a key in the keyboard.
+
+    :param key: Key to press down.
+    """
+    if not key:
+        return
+    pyautogui.keyDown(key, pause=None, _pause=False)
+
+
+def key_up(key: str) -> None:
+    """Release a key in the keyboard.
+
+    :param key: Key to release.
+    """
+    if not key:
+        return
+    pyautogui.keyUp(key, pause=None, _pause=False)

@@ -22,6 +22,8 @@ CMDS: Dict[str, Callable[[str], None]] = {
     "m-ckr": cmds_mouse.right_click,
     "k-txt": cmds_keyboard.write,
     "k-prs": cmds_keyboard.press,
+    "k-kdo": cmds_keyboard.key_down,
+    "k-kup": cmds_keyboard.key_up,
 }
 
 
