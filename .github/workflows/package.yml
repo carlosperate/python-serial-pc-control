@@ -18,12 +18,20 @@ jobs:
         python-version: 3.6
     - name: Print Python version
       run: python -c "import struct, sys; print('{}\n{} bits'.format(sys.version, struct.calcsize('P') * 8))"
+    - name: Download the Poetry installer
+      uses: carlosperate/download-file-action@v1.0.0
+      id: download-poetry
+      with:
+        file-url: 'https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py'
     - name: Install Poetry
-      run: python -m pip install poetry
+      run: |
+        python ${{ steps.download-poetry.outputs.file-path }} -y
+        echo "::add-path::$HOME/.poetry/bin"
+        rm ${{ steps.download-poetry.outputs.file-path }}
     - name: Install dependencies
-      run: python -m poetry install
+      run: poetry install
     - name: Run PyInstaller
-      run: python -m poetry run pyinstaller package/cli.spec
+      run: poetry run pyinstaller package/cli.spec
     - uses: actions/upload-artifact@v1
       with:
         name: cli-${{ matrix.os }}
