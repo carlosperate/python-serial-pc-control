@@ -18,6 +18,7 @@ CMDS: Dict[str, Callable[[str], None]] = {
     "m-mv": cmds_mouse.move_vertical,
     "m-mh": cmds_mouse.move_horizontal,
     "m-mr": cmds_mouse.move_relative,
+    "m-scr": cmds_mouse.scroll,
     "m-ckl": cmds_mouse.left_click,
     "m-ckr": cmds_mouse.right_click,
     "k-txt": cmds_keyboard.write,

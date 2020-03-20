@@ -79,10 +79,10 @@ def move_horizontal(pixels: str) -> None:
 
 
 def move_relative(pixels_x_y: str) -> None:
-    """Move the mouse horizontally a number of pixels.
+    """Move the mouse horizontally and vertically a number of pixels.
 
-    :param pixels: Number of pixels to move the mouse pointer, a positive
-        number will move right and negative left.
+    :param pixels: Number of pixels to move the mouse pointer, x and y values
+        separated by a space.
     """
     x_and_y = pixels_x_y.split(" ")
     x = int(x_and_y[0])
@@ -122,4 +122,4 @@ def scroll(steps: str) -> None:
     :param steps: Number of pixels to move the mouse pointer, a positive
         number will move right and negative left.
     """
-    pyautogui.scroll(steps)
+    pyautogui.scroll(steps, pause=None, _pause=False)
