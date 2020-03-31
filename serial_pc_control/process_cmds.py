@@ -75,7 +75,12 @@ def process_serial_cmds(serial: Serial, verbose: bool = False) -> NoReturn:
                 print(cmd_str)
             print("{} -> {}".format(cmd_name, cmd_content))
             if cmd_name in CMDS:
-                CMDS[cmd_name](cmd_content)
+                try:
+                    CMDS[cmd_name](cmd_content)
+                except Exception as e:
+                    print(
+                        "{}\nError processing command: {!r}".format(e, cmd_str)
+                    )
 
 
 def run(
