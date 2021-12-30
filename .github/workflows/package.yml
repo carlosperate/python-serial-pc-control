@@ -3,31 +3,23 @@ name: Package
 on: [push, pull_request]
 
 jobs:
-  run-tests:
-    runs-on: ubuntu-latest
+  package:
     strategy:
       matrix:
-        os: [ubuntu-16.04, macos-10.15, windows-2019]
+        os: [ubuntu-18.04, macos-10.15, windows-2019]
       fail-fast: false
+    runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.6
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: 3.6
+    - name: Install poetry
+      run: pipx install poetry
     - name: Print Python version
       run: python -c "import struct, sys; print('{}\n{} bits'.format(sys.version, struct.calcsize('P') * 8))"
-    - name: Download the Poetry installer
-      uses: carlosperate/download-file-action@v1.0.3
-      id: download-poetry
-      with:
-        file-url: 'https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py'
-    - name: Install Poetry
-      run: |
-        python ${{ steps.download-poetry.outputs.file-path }} -y
-        echo "::add-path::$HOME/.poetry/bin"
-        rm ${{ steps.download-poetry.outputs.file-path }}
     - name: Install dependencies
       run: poetry install
     - name: Run PyInstaller
