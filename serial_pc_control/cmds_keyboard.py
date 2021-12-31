@@ -31,7 +31,7 @@ def press(key: str) -> None:
     """
     if not key:
         return
-    pyautogui.press(key, interval=0.0, pause=None, _pause=False)
+    pyautogui.press(key, interval=0.0)
 
 
 def key_down(key: str) -> None:
@@ -41,7 +41,7 @@ def key_down(key: str) -> None:
     """
     if not key:
         return
-    pyautogui.keyDown(key, pause=None, _pause=False)
+    pyautogui.keyDown(key)
 
 
 def key_up(key: str) -> None:
@@ -51,4 +51,4 @@ def key_up(key: str) -> None:
     """
     if not key:
         return
-    pyautogui.keyUp(key, pause=None, _pause=False)
+    pyautogui.keyUp(key)
