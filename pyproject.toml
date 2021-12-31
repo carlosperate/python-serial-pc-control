@@ -16,9 +16,11 @@ typer = "^0.0.8"
 colorama = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
-# Packaging, macholib needed by PyInstaller in macOS
+# Packaging, PyInstaller needs macholib for macOS, pywin32 for Windows
 pyinstaller = "^3.6"
-macholib = "^1.8; platform_system == 'Darwin'"
+macholib = { version = "^1.8", platform = "darwin" }
+pywin32 = { version = "^303", platform = "windows" }
+pywin32-ctypes = { version = "^0.2.0", platform = "windows" }
 # Linting
 mypy = "^0.761"
 black = "^19.10b0"
