@@ -58,7 +58,7 @@ def get_next_serial_cmd(serial: Serial) -> bytes:
     """Wait until it can return full serial command."""
     cmd_full_str = None
     while not cmd_full_str:
-        cmd_full_str = serial.read_until(terminator=protocol.CMD_END)
+        cmd_full_str = serial.read_until(expected=protocol.CMD_END)
     return cmd_full_str
 
 

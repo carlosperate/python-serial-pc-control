@@ -11,7 +11,7 @@ authors = ["carlosperate <carlosperate@embeddedlog.com>"]
 [tool.poetry.dependencies]
 # PyInstaller 4.7 has a max Python lock < 3.11
 python = "^3.6,<3.11"
-pyserial = "^3.4"
+pyserial = "^3.5"
 pyautogui = "^0.9.48"
 typer = "^0.0.8"
 colorama = "^0.4.3"
