@@ -9,7 +9,8 @@ description = "Control your PC keyboard and mouse via serial messages."
 authors = ["carlosperate <carlosperate@embeddedlog.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+# PyInstaller 4.7 has a max Python lock < 3.11
+python = "^3.6,<3.11"
 pyserial = "^3.4"
 pyautogui = "^0.9.48"
 typer = "^0.0.8"
@@ -17,7 +18,7 @@ colorama = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 # Packaging, PyInstaller needs macholib for macOS, pywin32 for Windows
-pyinstaller = "^3.6"
+pyinstaller = "^4.7"
 macholib = { version = "^1.8", platform = "darwin" }
 pywin32 = { version = "^303", platform = "windows" }
 pywin32-ctypes = { version = "^0.2.0", platform = "windows" }
