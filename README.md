@@ -2,9 +2,10 @@
 
 [![GitHub Action Tests status](https://github.com/carlosperate/serial-pc-control/workflows/Tests/badge.svg)](https://github.com/carlosperate/serial-pc-control/actions)
 [![GitHub Action Package status](https://github.com/carlosperate/serial-pc-control/workflows/Package/badge.svg)](https://github.com/carlosperate/serial-pc-control/actions)
-![Supported Python versions](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue.svg)
+![Supported Python versions](https://img.shields.io/badge/python-3.6%20to%203.10-blue.svg)
+![Supported Platforms](https://img.shields.io/badge/platform-Windows%20%7C%20macOs%20%7C%20Linux-blue)
 [![Code style Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![PyPI - License](https://img.shields.io/pypi/l/ubittool.svg)](LICENSE)
+[![License](https://img.shields.io/pypi/l/ubittool.svg)](LICENSE)
 
 Control your PC keyboard and mouse via serial messages from a microcontroller
 board like the BBC micro:bit or Arduino.
@@ -22,7 +23,8 @@ Embedded libraries to use with this application:
 This project is still under heavy development, so it can be a little bit
 unstable or incomplete.
 
-Current way to run install and run it:
+Current way to install and run it is with [poetry](https://python-poetry.org):
+
 ```
 $ git clone https://github.com/carlosperate/serial-pc-control.git
 $ cd serial-pc-control
